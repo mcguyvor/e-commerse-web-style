@@ -10,7 +10,7 @@ const Shop = () =>{
 
     const [collection,setCollection] = useState(initialValue);
 
-    const {collections} = collection;
+    const {collections} = collection; // destructure state from collection === collection.collection
 
     return(
         
