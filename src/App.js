@@ -4,6 +4,7 @@ import HomePage from './pages/homepage/HomePage';
 import ShopPage from './pages/shop/Shop';
 import {Route,Switch} from 'react-router-dom';
 import Header from './component/header/Header';
+import SignInSignUp from './pages/sign-in-and-sign-up/Sign-in-Sign-up';
 
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
           
           <Route exact path='/shop' component={ShopPage}/>
 
+          <Route exact path='/signin' component={SignInSignUp}/>
        
         </Switch>
       
