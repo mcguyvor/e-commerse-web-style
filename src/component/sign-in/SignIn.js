@@ -3,6 +3,8 @@ import './sign-in.scss';
 import FormInput from '../form-input/FormInput';
 import CustomButton from '../custom-button/CustomButton';
 
+import {signInWithGoogle} from '../../firebase/firebase.utils';
+
 const SignIn = () =>{
 
     const initialValue = {
@@ -51,7 +53,12 @@ const SignIn = () =>{
                         />
 
                     <CustomButton type='submit'> Sign In </CustomButton>
-                
+                    <CustomButton onClick={signInWithGoogle}> 
+                    {' '}
+                    Sign in with Google
+                    {' '}
+                    </CustomButton>
+
                 </form>
             
             </div>
