@@ -16,15 +16,16 @@ function App() {
   useEffect(()=>{
     unsubscribeFromAuth=  auth.onAuthStateChanged(user=>{
         setCurrentUser({currentUser:user})
+        console.log(user)
       })
-      return unsubscribeFromAuth();
+      //return unsubscribeFromAuth();
   }
   ,[])
 
   return (
     
       <div>
-        <Header/>
+        <Header currentUser={currentUser}/>
         <Switch>
 
           <Route exact path='/' component={HomePage}/>
