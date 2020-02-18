@@ -10,12 +10,15 @@ import {auth,createUserProfileDocument} from '../../firebase/firebase.utils';
 
 const SignUp = () =>{
 
-    const [input,setInput] = useState({
+    const initialValue = {
         displayName:'',
         email:'',
         password:'',
         confirmPassword:''
-    });
+    };
+
+
+    const [input,setInput] = useState(initialValue);
 
     const {displayName,email,password,confirmPassword} = input;
 
@@ -30,7 +33,7 @@ const SignUp = () =>{
             const {user} = await auth.createUserWithEmailAndPassword(email,password);
             await createUserProfileDocument(user,{displayName});
 
-            setInput('');
+            setInput(initialValue);
 
         }catch(error){
             console.log(error);
@@ -40,10 +43,11 @@ const SignUp = () =>{
     const handleChange = e =>{
 
         const {name,value} = e.target;
+        console.log(name,value);
         
         setInput({
-            [name] : value,
-            ...input
+            ...input,
+            [name]: value
         })
     }
 

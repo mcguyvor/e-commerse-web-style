@@ -4,6 +4,8 @@ import './Sign-in-Sign-Up.scss';
 
 import SignIn from '../../component/sign-in/SignIn';
 
+import SignUp from '../../component/sign-up/SignUp';
+
 const SignInSignUp = ()=>{
 
     
@@ -12,8 +14,9 @@ const SignInSignUp = ()=>{
 
     return(
 
-        <div className='sign-in-sign-up'>
+        <div className='sign-in-and-sign-up'>
             <SignIn/>
+            <SignUp/>
         </div>
     
     )
