@@ -6,12 +6,15 @@ import {Route,Switch} from 'react-router-dom';
 import Header from './component/header/Header';
 import SignInSignUp from './pages/sign-in-and-sign-up/Sign-in-Sign-up';
 import {auth, createUserProfileDocument} from './firebase/firebase.utils';
+import {connect} from 'react-redux';
+import {setCurrentUser} from './redux/user/user-action';
 
-function App() {
+function App(props) {
 
-  const[currentUser,setCurrentUser]=useState({currentUser:null});
 
   let unsubscribeFromAuth = null;
+
+  const {setCurrentUser} = props;
 
   useEffect(()=>{
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -23,20 +26,14 @@ function App() {
 
             console.log('snapShot',snapShot);
 
-            setCurrentUser({
-              currentUser:{
+            props.setCurrentUser({         
                 id:snapShot.id,
                 ...snapShot.data()
-              }
             })
-            
-            console.log(currentUser)
-
           })
        }else{
-         setCurrentUser({currentUser:userAuth});
+         setCurrentUser({userAuth});
        }
-       console.log('currentUser',currentUser.currentUser);
 
       
       
@@ -53,7 +50,7 @@ function App() {
   return (
     
       <div>
-        <Header currentUser={currentUser}/>
+        <Header />
         <Switch>
 
           <Route exact path='/' component={HomePage}/>
@@ -69,4 +66,8 @@ function App() {
   );
 }
 
-export default App;
+const mapDispatchToProps = dispatch =>({
+  setCurrentUser : user => dispatch(setCurrentUser(user))
+});
+
+export default connect(null, mapDispatchToProps)(App);

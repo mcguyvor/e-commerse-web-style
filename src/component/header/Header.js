@@ -8,6 +8,7 @@ import {ReactComponent as Logo} from '../../assets/crown.svg';
 
 import {auth} from '../../firebase/firebase.utils';
 
+import {connect} from 'react-redux';
 const Header = ({currentUser}) => (
 
     <div className='header'>
@@ -25,7 +26,7 @@ const Header = ({currentUser}) => (
                 CONTACT
             </Link>
             {
-            currentUser.currentUser? 
+            currentUser? 
             <div className='option' onClick={()=> auth.signOut()}>
                     SIGN OUT
             </div>
@@ -41,4 +42,12 @@ const Header = ({currentUser}) => (
 
 )
 
-export default Header;
+const mapStateToProps = state =>({
+
+    currentUser : state.user.currentUser
+
+})
+
+
+
+export default connect(mapStateToProps)(Header);
