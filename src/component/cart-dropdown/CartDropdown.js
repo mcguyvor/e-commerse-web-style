@@ -8,6 +8,7 @@ import CartItem from '../cart-item/CartItem';
 
 import {useDispatch, useSelector} from 'react-redux';
 
+
 const CartDropdown = () =>{
 
         const dispatch = useDispatch();
