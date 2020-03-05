@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,mBAAmB,CAAA;EACf,OAAO,EAAC,IAAI;EACZ,cAAc,EAAC,MAAM;EACrB,aAAa,EAAC,IAAI;CAUrB;;AAbD,AAKI,mBALe,CAKf,MAAM,CAAA;EACF,SAAS,EAAC,IAAI;EACd,aAAa,EAAC,IAAI;CACrB;;AARL,AASI,mBATe,CASf,QAAQ,CAAA;EACJ,OAAO,EAAC,IAAI;EACZ,eAAe,EAAE,aAAa;CACjC",
+    "sources": [
+        "PreviewStyle.scss"
+    ],
+    "names": [],
+    "file": "PreviewStyle.css"
+}

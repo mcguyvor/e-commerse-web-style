@@ -2,11 +2,45 @@ import React from 'react';
 
 import './checkout-style.scss';
 
+import {useSelector} from 'react-redux';
+import CartItem from '../../component/cart-item/CartItem';
+
 const Checkout = () =>{
 
+
+    const cartItems = useSelector(state=> state.cart.cartItems);
+    
+    const total = cartItems =>
+          cartItems.reduce(
+            (accumalatedQuantity, cartItem) =>
+              accumalatedQuantity + cartItem.quantity * cartItem.price,
+            0
+          );
+
         return(
-            <div>
-                Checkout page
+            <div className='checkout-page'>
+                <div className='checkout-header'>
+                    <div className='header-block'>
+                    <span>Product</span>
+                    </div>
+                    <div className='header-block'>
+                    <span>Description</span>
+                    </div>
+                    <div className='header-block'>
+                    <span>Quantity</span>
+                    </div>
+                    <div className='header-block'>
+                    <span>Price</span>
+                    </div>
+                    <div className='header-block'>
+                    <span>Remove</span>
+                    </div>
+                </div>
+               {cartItems.map(CartItem=> CartItem.name)}
+
+                <div className='total'>
+                    <span>TOTAL : B{total(cartItems)}</span>
+                </div>
             </div>
         )
 }
