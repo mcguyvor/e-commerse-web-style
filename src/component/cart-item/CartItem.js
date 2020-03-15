@@ -2,8 +2,12 @@ import React from 'react';
 
 import './cart-item.scss';
 
+import { clearItemFromCart } from '../../redux/cart/cart-action';
+
+
 const CartItem = ({item :{imageUrl,price,name, quantity }})=>{
 
+    
     return(
         <div className='cart-item'>
             <img src={imageUrl} alt='alt'/>
