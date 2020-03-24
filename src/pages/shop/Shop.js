@@ -1,16 +1,14 @@
 import React,{useState,useEffect} from 'react';
 import SHOP_DATA from './shopData';
 import PreviewCollection from '../../component/preview-collection/PreviewCollection'
+import { useSelector } from 'react-redux';
 
-const Shop = () =>{
-        
-    const initialValue ={
-        collections: SHOP_DATA
-    }
+const Shop = () =>{   
 
-    const [collection,setCollection] = useState(initialValue);
+    const shopItems = useSelector(state => state.shop);
 
-    const {collections} = collection; // destructure state from collection === collection.collection
+    const {collections} = shopItems; // destructure state from collection === collection.collection
+
 
     return(
         

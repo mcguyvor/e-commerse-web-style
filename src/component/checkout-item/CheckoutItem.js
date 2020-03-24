@@ -2,7 +2,7 @@ import React from 'react';
 
 import './checkout-item.scss';
 
-import { clearItemFromCart, removeItem} from '../../redux/cart/cart-action';
+import { clearItemFromCart, removeItem, addItem} from '../../redux/cart/cart-action';
 
 import { useDispatch } from 'react-redux';
 
@@ -24,7 +24,7 @@ const CheckoutItem = ({cartItem}) =>{
                     &#10094;
                 </div>
                 <span className='value'>{quantity}</span>
-                <div className='arrow'>
+                <div className='arrow' onClick={()=>dispatch(addItem(cartItem))}>
                 &#10095;
                 </div>
             </span>
