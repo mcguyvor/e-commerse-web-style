@@ -2,8 +2,12 @@ import React,{useState,useEffect} from 'react';
 import SHOP_DATA from './shopData';
 import PreviewCollection from '../../component/preview-collection/PreviewCollection'
 import { useSelector } from 'react-redux';
+import CollectionOverview from '../../component/collection-overview/CollectionOverview';
+import { Route } from 'react-router-dom';
 
-const Shop = () =>{   
+import CategoryPage from '../catgegory/category';
+
+const Shop = ({match}) =>{   
 
     const shopItems = useSelector(state => state.shop);
 
@@ -13,13 +17,8 @@ const Shop = () =>{
     return(
         
             <div className='shop-page'>
-                {
-                    collections.map(({id,...props})=>(
-                        
-                        <PreviewCollection key={id} {...props}/>
-                    
-                        ))
-                }
+               <Route exact path={`${match.patch}`} componenet={CollectionOverview} />
+               <Route exact path={`${match.patch}/:categoryId`} component={CategoryPage} />
             </div>
 
 
