@@ -3,7 +3,6 @@ import React from 'react';
 import './checkout-style.scss';
 
 import {useSelector} from 'react-redux';
-import CartItem from '../../component/cart-item/CartItem';
 
 import CheckoutItem from '../../component/checkout-item/CheckoutItem';
 

@@ -1,8 +1,7 @@
-import React,{useState,useEffect} from 'react';
-import SHOP_DATA from './shopData';
+import React from 'react';
 import PreviewCollection from '../../component/preview-collection/PreviewCollection'
 import { useSelector } from 'react-redux';
-import CollectionOverview from '../../component/collection-overview/CollectionOverview';
+import './shop.scss';
 import { Route } from 'react-router-dom';
 
 import CollectionPage from '../collection/Collection';
@@ -11,14 +10,16 @@ const Shop = ({match}) =>{
 
     const shopItems = useSelector(state => state.shop);
 
-    const {collections} = shopItems; // destructure state from collection === collection.collection
-    console.log('match path',match.path);
-    console.log('collections', shopItems);
+    const collections = Object.keys(shopItems.collections).map(key => shopItems.collections[key]);
+
     return(
         
             <div className='shop-page'>
-               <Route exact path={`${match.path}`} componenet={CollectionOverview} />
-               <Route exact path={`${match.path}/:collectionId`} component={CollectionPage} />
+                <h1>shop</h1>
+                <div className='collections-overview'>
+                    {collections.map(({ id, title, items, ...props})=> <PreviewCollection key={id} title={title} items={items} {...props}/>)}
+                </div>
+               <Route path={`${match.path}/:collectionId`} component={CollectionPage} />
 
             </div>
 

@@ -33,7 +33,7 @@ const Header = ({currentUser,hidden}) => (
                 SHOP
             </Link>
 
-            <Link>
+            <Link to='contact'>
                 CONTACT
             </Link>
             {

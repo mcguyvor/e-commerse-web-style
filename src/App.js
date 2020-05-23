@@ -1,4 +1,4 @@
-import React,{useState,useEffect} from 'react';
+import React,{useEffect} from 'react';
 import './App.css';
 import HomePage from './pages/homepage/HomePage';
 import ShopPage from './pages/shop/Shop';
@@ -11,20 +11,19 @@ import {connect} from 'react-redux';
 import {setCurrentUser} from './redux/user/user-action';
 import { selectCurrentUser } from './redux/user/user-selector';
 import { createStructuredSelector } from 'reselect';
-import CheckoutPage from './pages/checkout/Checkout';
 import Checkout from './pages/checkout/Checkout';
 
 
 function App(props) {
 
 
-  let unsubscribeFromAuth = null;
+  let unsubscribeFromAuth = null ;
 
   const {setCurrentUser} = props;
 
   useEffect(()=>{
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    unsubscribeFromAuth=  auth.onAuthStateChanged( async userAuth=>{
+     let unsubscribeFromAuth=  auth.onAuthStateChanged( async userAuth=>{
        if(userAuth){
           const userRef= await createUserProfileDocument(userAuth);
 
@@ -55,7 +54,7 @@ function App(props) {
 
           <Route exact path='/' component={HomePage}/>
           
-          <Route  path='/shop' component={ShopPage}/>
+          <Route exact path='/shop' component={ShopPage}/>
 
           <Route exact path='/signin' render={()=>props.currentUser ? (<Redirect to='/'/>) : (<SignInSignUp/>)}/>
        

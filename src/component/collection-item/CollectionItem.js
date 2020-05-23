@@ -4,9 +4,9 @@ import CustomButtom from '../custom-button/CustomButton';
 
 import './collection-item.scss';
 
-import {useSelector, useDispatch} from 'react-redux';
+import { useDispatch } from 'react-redux';
 
-import {addItem} from '../../redux/cart/cart-action';
+import { addItem } from '../../redux/cart/cart-action';
 
 const CollectionItem = ({item}) =>{
 
