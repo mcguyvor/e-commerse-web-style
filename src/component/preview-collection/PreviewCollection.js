@@ -16,7 +16,7 @@ const PreviewCollection = ({title, items}) =>(
                         <CollectionItem key={item.id} item={item}/>
                                 
                         ))
-                }
+                } 
             </div>
 
     </div>

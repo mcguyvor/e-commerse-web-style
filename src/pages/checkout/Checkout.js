@@ -6,6 +6,7 @@ import {useSelector} from 'react-redux';
 
 import CheckoutItem from '../../component/checkout-item/CheckoutItem';
 
+import StripeCheckOutButton from '../../component/stripe-button/stripe-button.component';
 const Checkout = () =>{
 
 
@@ -44,6 +45,7 @@ const Checkout = () =>{
                 <div className='total'>
                     <span>TOTAL : B{total(cartItems)}</span>
                 </div>
+                <StripeCheckOutButton price = {total}/>
             </div>
         )
 }
