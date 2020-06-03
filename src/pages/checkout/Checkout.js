@@ -12,12 +12,13 @@ const Checkout = () =>{
 
     const cartItems = useSelector(state=> state.cart.cartItems);
     
-    const total = cartItems =>
-          cartItems.reduce(
+    const total = cartItems =>{
+         return cartItems.reduce(
             (accumalatedQuantity, cartItem) =>
               accumalatedQuantity + cartItem.quantity * cartItem.price,
             0
           );
+    }
 
         return(
             <div className='checkout-page'>
@@ -45,7 +46,12 @@ const Checkout = () =>{
                 <div className='total'>
                     <span>TOTAL : B{total(cartItems)}</span>
                 </div>
-                <StripeCheckOutButton price = {total}/>
+                <div className='test-warning'>
+                  Please use Following test credit card for payments
+                  <br/>
+                  4242 4242 4242 4242 - Exp:01/21 cvv:123
+                </div>
+                <StripeCheckOutButton price = {total(cartItems)}/>
             </div>
         )
 }
