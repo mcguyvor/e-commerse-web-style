@@ -16,4 +16,4 @@ import {persistStore} from 'redux-persist';
 
  const persistor = persistStore(store);
 
-export  {store, persistor};
+export {store, persistor};

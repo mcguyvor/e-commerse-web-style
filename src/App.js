@@ -6,13 +6,14 @@ import {Route,Switch,Redirect} from 'react-router-dom';
 
 import Header from './component/header/Header';
 import SignInSignUp from './pages/sign-in-and-sign-up/Sign-in-Sign-up';
-import {auth, createUserProfileDocument} from './firebase/firebase.utils';
+import {auth, createUserProfileDocument, addCollectionAndDocuments} from './firebase/firebase.utils';
 import {connect} from 'react-redux';
 import {setCurrentUser} from './redux/user/user-action';
 import { selectCurrentUser } from './redux/user/user-selector';
 import { createStructuredSelector } from 'reselect';
 import Checkout from './pages/checkout/Checkout';
-
+import { store} from './redux/store/store';
+import {useSelector} from 'react-redux';
 
 function App(props) {
 
@@ -20,6 +21,8 @@ function App(props) {
   let unsubscribeFromAuth = null ;
 
   const {setCurrentUser} = props;
+
+  const collectionsArray = useSelector(state=>state.shop);
 
   useEffect(()=>{
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -38,6 +41,8 @@ function App(props) {
           })
        }else{
          setCurrentUser({userAuth});
+
+         addCollectionAndDocuments('collections', collectionsArray);
        } 
       //setCurrentUser({currentUser:user})
       //  console.log(user)
