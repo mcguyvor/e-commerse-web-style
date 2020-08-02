@@ -1,4 +1,4 @@
-import React,{useEffect} from 'react';
+import React,{useEffect, useState} from 'react';
 import './App.css';
 import HomePage from './pages/homepage/HomePage';
 import ShopPage from './pages/shop/Shop';
@@ -21,8 +21,10 @@ function App(props) {
   let unsubscribeFromAuth = null ;
 
   const {setCurrentUser} = props;
+  const collectionsArrays = useSelector(state=>state.shop);
 
-  const collectionsArray = useSelector(state=>state.shop);
+  const [collectionsArray, setCollectionsArray] = useState(collectionsArrays); 
+  // const collectionsArray = useSelector(state=>state.shop);
 
   useEffect(()=>{
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -31,9 +33,6 @@ function App(props) {
           const userRef= await createUserProfileDocument(userAuth);
 
           userRef.onSnapshot(snapShot =>{
-
-            console.log('snapShot',snapShot);
-
             props.setCurrentUser({         
                 id:snapShot.id,
                 ...snapShot.data()

@@ -1,16 +1,33 @@
-import React from 'react';
+import React , {useEffect} from 'react';
 import PreviewCollection from '../../component/preview-collection/PreviewCollection'
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import './shop.scss';
 import { Route } from 'react-router-dom';
+import { firestore, convertCollectionsSnapshotToMap } from '../../firebase/firebase.utils';
+import {updateCollections} from '../../redux/shop/shop.actions';
 
 import CollectionPage from '../collection/Collection';
+
+
 
 const Shop = ({match}) =>{   
 
     const shopItems = useSelector(state => state.shop);
 
+    const dispatch = useDispatch();
+
+
     const collections = Object.keys(shopItems.collections).map(key => shopItems.collections[key]);
+
+    let unsubscribeFromSnapShot = null;
+
+    useEffect(()=>{
+        const collectionRef = firestore.collection('collections');
+        unsubscribeFromSnapShot = collectionRef.onSnapshot(async snapshot => {
+            const collectionsMap =  convertCollectionsSnapshotToMap(snapshot);
+            dispatch(updateCollections(collectionsMap));
+        })  
+    },[])
 
     return(
         
