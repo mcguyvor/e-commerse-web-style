@@ -10,7 +10,6 @@ const CollectionPage = ({match}) =>{
     const shopItems = useSelector(state => state.shop);
     //const collection = shopItems.collections.filter(idx => idx.routeName === match.params.collectionId);
     const collection = shopItems.collections[match.params.collectionId];
-    console.log('collection', collection)
     const {title,items} = collection;
     return(
         <div className='collection-page'>
